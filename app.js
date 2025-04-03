@@ -1,4 +1,4 @@
-const boardSize = 4;
+const boardSize = 3;
 const boardElement = document.getElementById("board");
 
 for (let i = 0; i < boardSize * boardSize; i++) {

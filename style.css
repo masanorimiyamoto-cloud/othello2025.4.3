@@ -1,35 +1,34 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-}
-
+/* 共通スタイル */
 #board {
     display: grid;
-    grid-template-columns: repeat(8, 50px);
-    grid-template-rows: repeat(8, 50px);
-    gap: 2px;
-    margin: 20px auto;
-    width: 416px;
-}
-
-.cell {
-    width: 50px;
-    height: 50px;
-    background-color: #2e8b57;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    max-width: 400px; /* デスクトップの場合は適度な最大幅を設定 */
+    margin: 0 auto;
+  }
+  
+  .cell {
+    background-color: lightgray;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-}
-
-.cell.black::after {
-    content: "●";
-    font-size: 30px;
-    color: black;
-}
-
-.cell.white::after {
-    content: "○";
-    font-size: 30px;
-    color: white;
-}
+    /* aspect-ratioで正方形に */
+    aspect-ratio: 1 / 1;
+    /* デスクトップ用のフォントサイズ */
+    font-size: 24px;
+  }
+  
+  /* スマホ向けの調整 */
+  @media (max-width: 768px) {
+    #board {
+      width: 95%;
+      max-width: none;
+      grid-template-columns: repeat(4, 1fr); /* 画面幅に応じた4列グリッド */
+    }
+    .cell {
+      /* 幅・高さはグリッドが自動で決めるため、font-sizeを調整 */
+      font-size: 5vw;
+    }
+  }
+  
