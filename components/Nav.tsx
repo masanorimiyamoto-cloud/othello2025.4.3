@@ -1,2 +1,8 @@
 import Link from "next/link";
-export function Nav() { return <nav className="nav" aria-label="自分の物判定メニュー"><Link href="/my-items">登録品</Link><Link href="/my-items/new">登録する</Link><Link href="/judge">判定する</Link><Link href="/judge/history">履歴</Link></nav>; }
+const items = [
+  { href: "/my-items", label: "登録品" },
+  { href: "/my-items/new", label: "登録" },
+  { href: "/judge", label: "判定" },
+  { href: "/judge/history", label: "履歴" },
+] as const;
+export function Nav() { return <nav className="nav" aria-label="自分の物判定メニュー">{items.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}</nav>; }

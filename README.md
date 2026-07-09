@@ -25,8 +25,13 @@ npm run dev
 
 1. GitHubリポジトリをVercelプロジェクトへ接続します。
 2. Storageから **Private** のVercel Blobストアを作成し、プロジェクトへ接続します。写真は公開Blobではなく認証済みAPI経由で配信します。
-3. Project Settings → Environment Variables に上記4変数を設定します。少なくとも `APP_PIN` と `BLOB_READ_WRITE_TOKEN`、AI利用時は `OPENAI_API_KEY` を設定します。
+3. Project Settings → Environment Variables に次を設定します。
+   - `APP_PIN`: 例 `changeme`
+   - `BLOB_READ_WRITE_TOKEN`: Blob接続トークン
+   - `OPENAI_API_KEY`: AI判定を使う場合のみ
+   - `OPENAI_MODEL`: 任意
 4. Framework PresetをNext.js、Build Commandを `npm run build` としてデプロイします。
+5. 初回デプロイ後は、Vercelのブラウザから `/login` を開いて PIN を入力してください。
 
 Blob上のJSON indexは単一利用者向けMVPです。複数利用者や更新頻度が増える本格運用では、メタデータをPostgres等へ移し、PIN認証をNextAuth/Auth.js等へ差し替えてください。
 
